@@ -16,8 +16,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".GameplayActivity" />
-        <activity android:name=".Questions" />
-        <activity android:name=".Answer"></activity>
     </application>
 
 </manifest>

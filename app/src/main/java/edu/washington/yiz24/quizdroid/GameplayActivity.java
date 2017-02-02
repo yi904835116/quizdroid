@@ -1,6 +1,7 @@
 package edu.washington.yiz24.quizdroid;
 
 import android.content.Intent;
+import android.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,11 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class GameplayActivity extends AppCompatActivity {
 
-    private String math = "The math quiz test is going to test you some basic questions about calculation";
-    private String pythics = "The pythics test text is going to test you some basic questions about Mechanics Physics";
-    private String marvel = "the marvel test is going to test the basic knowledge about Marvel Herios";
+    String topic;
 
 
     @Override
@@ -22,26 +23,42 @@ public class GameplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay);
 
         Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
 
-        TextView title = (TextView) findViewById(R.id.title);
-        title.setText("Math");
+//        topic = intent.getStringExtra("topic");
+//        bundle.putString("topic",topic);
+        introFragment intro = new introFragment();
+        intro.setArguments(bundle);
+        FragmentManager fm = getFragmentManager();
+        fm.beginTransaction().replace(R.id.container, intro).commit();
 
-        TextView description = (TextView) findViewById(R.id.description);
-        description.setText(math);
 
-        Button begin = (Button) findViewById(R.id.button);
-        begin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(GameplayActivity.this,Questions.class);
-                startActivity(i);
-            }
-        });
 
+//        if(topic.equals("Math")){
+//            setMathFragment();
+//        }else if (topic.equals("Physics")) {
+//            physicsFragment();
+//        }else{
+//            marvelFragment();
+//        }
+
+//        TextView title = (TextView) findViewById(R.id.title);
+//        title.setText("Math");
+//
+//        TextView description = (TextView) findViewById(R.id.description);
+//        description.setText(math);
+//
+//        Button begin = (Button) findViewById(R.id.button);
+//        begin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(GameplayActivity.this,Questions.class);
+//
+//                startActivity(i);
+//            }
+//        });
 
     }
-
-
 
 
 }

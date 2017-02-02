@@ -11,41 +11,12 @@
     tools:context="edu.washington.yiz24.quizdroid.GameplayActivity">
 
 
-    <TextView
-        android:text="TextView"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="40dp"
-        android:id="@+id/title"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/container"
+        android:orientation="vertical"
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/description"
-        android:layout_below="@+id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp" />
+        />
 
-    <Button
-        android:text="Begin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp"
-        android:id="@+id/button" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Question: 6"
-        android:layout_marginTop="65dp"
-        android:id="@+id/number"
-        android:layout_below="@+id/description"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
 </RelativeLayout>
