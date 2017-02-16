@@ -33,31 +33,6 @@ public class GameplayActivity extends AppCompatActivity {
         fm.beginTransaction().replace(R.id.container, intro).commit();
 
 
-
-//        if(topic.equals("Math")){
-//            setMathFragment();
-//        }else if (topic.equals("Physics")) {
-//            physicsFragment();
-//        }else{
-//            marvelFragment();
-//        }
-
-//        TextView title = (TextView) findViewById(R.id.title);
-//        title.setText("Math");
-//
-//        TextView description = (TextView) findViewById(R.id.description);
-//        description.setText(math);
-//
-//        Button begin = (Button) findViewById(R.id.button);
-//        begin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(GameplayActivity.this,Questions.class);
-//
-//                startActivity(i);
-//            }
-//        });
-
     }
 
 

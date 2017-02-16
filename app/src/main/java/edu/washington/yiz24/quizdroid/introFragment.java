@@ -22,11 +22,10 @@ public class introFragment extends Fragment {
 
 
 
-    String topic;
+    Topic topic;
     int question;
 
 
-    ArrayList<Question> content;
 
     String mathD;
     String physicsD;
@@ -37,13 +36,13 @@ public class introFragment extends Fragment {
     public introFragment() {
         // Required empty public constructor
 
-        Question math;
-        Question physics;
-        Question marvel;
-        content = new ArrayList<Question>();
-        mathD = "The math quiz test is going to test you some basic questions about calculation";
-        physicsD = "The pythics test text is going to test you some basic questions about Mechanics Physics";
-        marvelD = "the marvel test is going to test the basic knowledge about Marvel Herios";
+//        Question math;
+//        Question physics;
+//        Question marvel;
+//        content = new ArrayList<Question>();
+//        mathD = "The math quiz test is going to test you some basic questions about calculation";
+//        physicsD = "The pythics test text is going to test you some basic questions about Mechanics Physics";
+//        marvelD = "the marvel test is going to test the basic knowledge about Marvel Herios";
         question = 3;
     }
 
@@ -55,23 +54,23 @@ public class introFragment extends Fragment {
         // Inflate the layout for this fragment
 
         bundle = getArguments();
-        topic = bundle.getString("topic");
-
-        content = bundle.getParcelableArrayList("content");
+        topic = (Topic) bundle.getSerializable("topic");
+        final String titleName = topic.getTitle();
 
 
         View view = inflater.inflate(R.layout.fragment_intro, container, false);
 
         TextView title = (TextView) view.findViewById(R.id.title);
-        title.setText(topic);
+        title.setText(titleName);
         TextView des = (TextView) view.findViewById(R.id.description);
-        if(topic.equals("Math")){
-            des.setText(this.mathD);
-        }else if(topic.equals("Physics")) {
-            des.setText(physicsD);
-        }else {
-            des.setText(marvelD);
-        }
+//        if(topic.equals("Math")){
+//            des.setText(this);
+//        }else if(topic.equals("Physics")) {
+//            des.setText(physicsD);
+//        }else {
+//            des.setText(marvelD);
+//        }
+        des.setText(topic.getDescription());
 
         TextView q = (TextView) view.findViewById(R.id.number);
         q.setText("Total questions:" + question);
@@ -81,10 +80,9 @@ public class introFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 QuestionFragment qf = new QuestionFragment();
-                bundle.putString("topic",topic);
                 bundle.putInt("round",0);
                 bundle.putInt("total",0);
-
+                bundle.putInt("correct",0);
 
                 FragmentManager fm = getFragmentManager();
                 qf.setArguments(bundle);

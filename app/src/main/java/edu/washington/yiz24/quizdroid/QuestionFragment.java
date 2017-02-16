@@ -25,7 +25,6 @@ import java.util.List;
  */
 public class QuestionFragment extends Fragment {
 
-    String topic;
     // questions
 //    ArrayList<Question> math;
 //    ArrayList<Question> physics;
@@ -34,16 +33,14 @@ public class QuestionFragment extends Fragment {
     int round;
     int total;
     int correct;
-    String[] opt;
+    List<String> opt;
     String answer;
 
     Bundle bundle;
 
-    public QuestionFragment() {
-//        math = new ArrayList<Question>();
-//        physics = new ArrayList<Question>();
-        content = new ArrayList<Question>();
-    }
+    Topic topic;
+
+    public QuestionFragment() {}
 
 
     @Override
@@ -52,27 +49,34 @@ public class QuestionFragment extends Fragment {
         // Inflate the layout for this fragment
 
         bundle = getArguments();
-        topic = bundle.getString("topic");
+
+        topic = (Topic) bundle.getSerializable("topic");
+
+
+        String titleName = topic.getTitle();
         round = bundle.getInt("round");
         total = bundle.getInt("total");
         correct = bundle.getInt("correct");
 //        this.math = bundle.getParcelableArrayList("math");
 //        this.physics = bundle.getParcelableArrayList("physics");
-        this.content = bundle.getParcelableArrayList("content");
+//        this.content = bundle.getParcelableArrayList("content");
 
         final View view = inflater.inflate(R.layout.fragment_question, container, false);
 
         TextView q = (TextView) view.findViewById(R.id.question);
-        q.setText(content.get(round).getQuestion());
+        List<Quiz> questions = topic.getQuestions();;
+        Quiz current = questions.get(round);
 
-        opt = content.get(round).getOption();
-        answer = content.get(round).getCorrect();
+        q.setText(current.getText());
+
+        opt = current.getAnswers();
+        answer = current.getCorrect();
 
 
         RadioGroup radiogroup = (RadioGroup) view.findViewById(R.id.radioGroup);
         for(int i = 0; i < radiogroup.getChildCount(); i++){
             RadioButton button = (RadioButton) radiogroup.getChildAt(i);
-            button.setText(opt[i]);
+            button.setText(opt.get(i));
         }
 
 

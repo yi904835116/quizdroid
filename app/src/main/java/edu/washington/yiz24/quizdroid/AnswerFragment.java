@@ -52,7 +52,7 @@ public class AnswerFragment extends Fragment {
         Button next = (Button) view.findViewById(R.id.next);
         Button finish = (Button) view.findViewById(R.id.finish);
 
-        if(round < 3){
+        if(round < 1){
             finish.setVisibility(view.GONE);
         }else{
             next.setVisibility(view.GONE);
