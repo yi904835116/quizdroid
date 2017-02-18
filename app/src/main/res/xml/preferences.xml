@@ -14,7 +14,7 @@
 
     <PreferenceCategory android:title="Security Settings" >
         <EditTextPreference
-            android:defaultValue="false"
+            android:defaultValue="20"
             android:key="prefLockScreen"
             android:summary="Enter how often (in minutes) "
             android:title="Update Intervals (minutes)" >

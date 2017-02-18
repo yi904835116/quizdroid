@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class GameplayActivity extends AppCompatActivity {
 
-    String topic;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +22,6 @@ public class GameplayActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
-//        topic = intent.getStringExtra("topic");
-//        bundle.putString("topic",topic);
         introFragment intro = new introFragment();
         intro.setArguments(bundle);
         FragmentManager fm = getFragmentManager();

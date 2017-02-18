@@ -26,24 +26,9 @@ public class introFragment extends Fragment {
     int question;
 
 
-
-    String mathD;
-    String physicsD;
-    String marvelD;
-
     Bundle bundle;
 
     public introFragment() {
-        // Required empty public constructor
-
-//        Question math;
-//        Question physics;
-//        Question marvel;
-//        content = new ArrayList<Question>();
-//        mathD = "The math quiz test is going to test you some basic questions about calculation";
-//        physicsD = "The pythics test text is going to test you some basic questions about Mechanics Physics";
-//        marvelD = "the marvel test is going to test the basic knowledge about Marvel Herios";
-
     }
 
 

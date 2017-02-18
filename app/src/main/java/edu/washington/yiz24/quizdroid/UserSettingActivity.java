@@ -1,41 +1,46 @@
 package edu.washington.yiz24.quizdroid;
 
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import edu.washington.yiz24.quizdroid.R;
+public class UserSettingActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+    public static final String PREFS_NAME = "URL";
+    private Toast toast;
+    private String url;
 
-/**
- * Created by Eden on 5/19/15.
- */
-public class UserSettingActivity extends PreferenceActivity {
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
         addPreferencesFromResource(R.xml.preferences);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals(PREFS_NAME)) {
+            Preference p = findPreference(key);
+//            url = sharedPreferences.getString(key, "");
+//            toast = Toast.makeText(getApplicationContext(), "Updated URL to " + url, Toast.LENGTH_LONG);
+//            toast.show();
+        }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    protected void onResume() {
+        super.onResume();
+        getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    @Override
+    protected void onPause() {
+        super.onPause();
+        getPreferenceScreen().getSharedPreferences()
+                .unregisterOnSharedPreferenceChangeListener(this);
     }
 }

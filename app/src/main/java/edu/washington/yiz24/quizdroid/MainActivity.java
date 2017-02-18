@@ -8,11 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,12 +17,6 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
 
     @Override
@@ -47,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
             quizTopics[i] = topics.get(i).getTitle();
         }
 
-
-
-
         listView.setOnItemClickListener(new ListView.OnItemClickListener() {
 
             @Override
@@ -69,9 +57,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // create the header bar!
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-
-
+    // header bar option
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -81,10 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this, UserSettingActivity.class);
+            startActivity(settingsIntent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }
