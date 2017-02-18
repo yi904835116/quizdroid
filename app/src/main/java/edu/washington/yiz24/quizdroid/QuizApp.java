@@ -34,6 +34,8 @@ public class QuizApp extends Application {
 
         try { // gets the JSON and creates a new TopicRepository
             InputStream inputStream = getAssets().open("questions.json");
+            if (inputStream == null) Log.i("QuizApp","inputStream == null");
+
             String json = readJSONFile(inputStream);
             repo = new JSONRepository(json);
         } catch (IOException e) {
@@ -48,17 +50,14 @@ public class QuizApp extends Application {
     }
 
     // reads given InputStream of JSON file and returns it in string format
-    private String readJSONFile(InputStream inputStream) throws IOException {
-        int size = inputStream.available();
+
+    public String readJSONFile(InputStream fis) throws IOException {
+        int size = fis.available();
         byte[] buffer = new byte[size];
-        inputStream.read(buffer);
-        inputStream.close();
-
+        fis.read(buffer);
+        fis.close();
         return new String(buffer, "UTF-8");
-
-
     }
-
 }
 
     class JSONRepository implements TopicRepository {
@@ -106,7 +105,7 @@ public class QuizApp extends Application {
         }
 
         public List<Topic> getAllTopics() {
-            return topics;
+            return this.topics;
         }
     }
 

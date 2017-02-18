@@ -13,8 +13,8 @@
         ]
       }
     ]
-      },
-      { "title":"Marvel Super Heroes", "desc": "Avengers, Assemble!",
+  },
+  { "title":"Marvel Super Heroes", "desc": "Avengers, Assemble!",
     "questions":[
       {
         "text":"Who is Iron Man?",

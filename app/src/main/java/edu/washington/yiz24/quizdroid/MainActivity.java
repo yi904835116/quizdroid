@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
 
                 bundle.putSerializable("topic", topics.get(position));
-
+                bundle.putInt("totalRound",topics.get(position).getQuestions().size());
                 intent.putExtras(bundle);
 
                 startActivity(intent);

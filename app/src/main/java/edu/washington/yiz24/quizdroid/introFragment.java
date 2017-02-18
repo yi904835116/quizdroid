@@ -43,7 +43,7 @@ public class introFragment extends Fragment {
 //        mathD = "The math quiz test is going to test you some basic questions about calculation";
 //        physicsD = "The pythics test text is going to test you some basic questions about Mechanics Physics";
 //        marvelD = "the marvel test is going to test the basic knowledge about Marvel Herios";
-        question = 3;
+
     }
 
 
@@ -57,6 +57,7 @@ public class introFragment extends Fragment {
         topic = (Topic) bundle.getSerializable("topic");
         final String titleName = topic.getTitle();
 
+        question = bundle.getInt("totalRound");
 
         View view = inflater.inflate(R.layout.fragment_intro, container, false);
 

@@ -25,11 +25,6 @@ import java.util.List;
  */
 public class QuestionFragment extends Fragment {
 
-    // questions
-//    ArrayList<Question> math;
-//    ArrayList<Question> physics;
-    ArrayList<Question> content;
-
     int round;
     int total;
     int correct;
@@ -57,9 +52,6 @@ public class QuestionFragment extends Fragment {
         round = bundle.getInt("round");
         total = bundle.getInt("total");
         correct = bundle.getInt("correct");
-//        this.math = bundle.getParcelableArrayList("math");
-//        this.physics = bundle.getParcelableArrayList("physics");
-//        this.content = bundle.getParcelableArrayList("content");
 
         final View view = inflater.inflate(R.layout.fragment_question, container, false);
 

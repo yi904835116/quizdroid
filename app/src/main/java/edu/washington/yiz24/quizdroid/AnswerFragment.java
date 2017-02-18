@@ -21,6 +21,7 @@ public class AnswerFragment extends Fragment {
     int correct;
     String input;
     String answer;
+    int totalRound;
 
     Bundle bundle;
 
@@ -41,6 +42,8 @@ public class AnswerFragment extends Fragment {
         answer = bundle.getString("answer");
         input = bundle.getString("input");
         round = bundle.getInt("round");
+        totalRound = bundle.getInt("totalRound");
+
         round++;
         TextView report = (TextView) view.findViewById(R.id.number);
         TextView inputContent = (TextView) view.findViewById(R.id.input);
@@ -52,7 +55,7 @@ public class AnswerFragment extends Fragment {
         Button next = (Button) view.findViewById(R.id.next);
         Button finish = (Button) view.findViewById(R.id.finish);
 
-        if(round < 2){
+        if(round < totalRound){
             finish.setVisibility(view.GONE);
         }else{
             next.setVisibility(view.GONE);
