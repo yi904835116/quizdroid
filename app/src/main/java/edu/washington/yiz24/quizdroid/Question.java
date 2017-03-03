@@ -1,69 +1,37 @@
 package edu.washington.yiz24.quizdroid;
 
-import android.os.Parcel;
-import android.os.Parcelable;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
-/**
- * Created by yizhaoyang on 01/02/2017.
- */
+public class Question implements Serializable {
 
-public class Question  implements Parcelable {
-    private String question;
-    private String[] option;
-    private String correct;
+    private String questionText;
+    private String[] answers;
+    private int correctAnswer;
 
-    public Question(){
-        option = new String[4];
+    public Question() { }
+
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
-    public void addQuestion(String question, String[] option, String correct){
-        this.question = question;
-        this.option = option;
-        this.correct = correct;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public String getQuestion(){
-        return  this.question;
+    public String[] getAnswers() {
+        return answers;
     }
 
-    public String getCorrect(){
-        return this.correct;
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
     }
 
-    public String[] getOption() {
-        return this.option;
-    }
-    public int describeContents() {
-        return 0;
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
-    public void writeToParcel(Parcel out, int flags) {
-        out.writeString(question);
-        out.writeStringArray(option);
-        out.writeString(correct);
-    }
-
-    public static final Parcelable.Creator<Question> CREATOR
-            = new Parcelable.Creator<Question>() {
-        public Question createFromParcel(Parcel in) {
-            return new Question(in);
-        }
-
-        public Question[] newArray(int size) {
-            return new Question[size];
-        }
-    };
-
-    private Question(Parcel in) {
-        question = in.readString();
-        option = new String[4];
-        in.readStringArray(option);
-        correct = in.readString();
+    public String getCorrectAnswer() {
+        return answers[correctAnswer];
     }
 }
